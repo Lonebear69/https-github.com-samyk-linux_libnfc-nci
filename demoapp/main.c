@@ -21,6 +21,7 @@
 #include <string.h>
 #include "linux_nfc_api.h"
 #include "tools.h"
+void PrintNDEFContent(nfc_tag_info_t* TagInfo, ndef_info_t* NDEFinfo, unsigned char* ndefRaw, unsigned int ndefRawLen);
 typedef enum eDevState
 {
     eDevState_NONE,
@@ -448,7 +449,7 @@ void onMessageReceived(unsigned char *message, unsigned int length)
 {
     unsigned int i = 0x00;
     printf("\n\t\tNDEF Message Received : \n");
-    PrintNDEFContent(NULL, NULL, message, length);
+    PrintNDEFContent((nfc_tag_info_t*)NULL, (ndef_info_t*)NULL, message, length);
 }
 void onSnepClientReady()
 {

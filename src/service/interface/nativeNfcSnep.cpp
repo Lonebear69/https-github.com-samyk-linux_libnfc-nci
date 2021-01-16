@@ -16,7 +16,11 @@
  *
  ******************************************************************************/
 
+#ifdef __APPLE__
+#include <stdlib.h>
+#else
 #include <malloc.h>
+#endif
 #include <pthread.h>
 
 #include "nativeNfcSnep.h"

@@ -38,7 +38,11 @@
 #include "OverrideLog.h"
 #include <sys/types.h>
 #include <sys/stat.h>
+#ifdef __APPLE__
+#include <stdlib.h>
+#else
 #include <malloc.h>
+#endif
 #include <fcntl.h>
 #include <errno.h>
 #include "buildcfg.h"

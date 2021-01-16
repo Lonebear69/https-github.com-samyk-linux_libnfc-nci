@@ -34,7 +34,12 @@
  *  limitations under the License.
  *
  ******************************************************************************/
+#ifdef __APPLE__
+#define PTHREAD_MUTEX_RECURSIVE_NP PTHREAD_MUTEX_RECURSIVE
+#include <stdlib.h>
+#else
 #include <malloc.h>
+#endif
 #include <stdio.h>
 #include <stdarg.h>
 #include <errno.h>

@@ -39,7 +39,11 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <errno.h>
+#ifdef __APPLE__
+#include <stdlib.h>
+#else
 #include <malloc.h>
+#endif
 
 #include "nativeNfcTag.h"
 #include "nativeNfcManager.h"

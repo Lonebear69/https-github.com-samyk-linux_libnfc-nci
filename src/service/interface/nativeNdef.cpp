@@ -17,7 +17,11 @@
  ******************************************************************************/
 
 #include <string.h>
+#ifdef __APPLE__
+#include <stdlib.h>
+#else
 #include <malloc.h>
+#endif
 #include "nativeNdef.h"
 
 extern "C"

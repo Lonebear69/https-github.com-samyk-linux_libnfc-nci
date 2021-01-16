@@ -16,8 +16,12 @@
  *
  ******************************************************************************/
 
+#ifdef __APPLE__
+#include <stdlib.h>
+#else
 #include <malloc.h>
- #include <string.h>
+#endif
+#include <string.h>
 #include <pthread.h>
 
 #include "nativeNfcLlcp.h"
