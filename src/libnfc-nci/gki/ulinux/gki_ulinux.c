@@ -289,10 +289,15 @@ UINT8 GKI_create_task (TASKPTR task_entry, UINT8 task_id, INT8 *taskname, UINT16
     }
     else
     {
-         if(pthread_setname_np(gki_cb.os.thread_id[task_id],taskname))
-         {
-             GKI_TRACE_1("pthread_setname_np in %s failed",__FUNCTION__);
-         }
+#ifdef __APPLE__
+        // XXX we need to do this from within the thread
+        if(pthread_setname_np(taskname))
+#else
+        if(pthread_setname_np(gki_cb.os.thread_id[task_id],taskname))
+#endif
+        {
+            GKI_TRACE_1("pthread_setname_np in %s failed",__FUNCTION__);
+        }
     }
 
     if(pthread_getschedparam(gki_cb.os.thread_id[task_id], &policy, &param)==0)
